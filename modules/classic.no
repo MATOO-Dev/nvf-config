@@ -1,0 +1,12 @@
+{ inputs, ... }:
+{
+	config.systems = [ "x86_64-linux" ];
+
+	# self.packages.${pkgs.system}.myPackage
+	config.perSystem = { pkgs, ... }: {
+		packages.nvim = pkgs.stdenv.mkDerivation {
+			pname = "neovim";
+			version = "1.0.0";
+		};
+	};
+}
