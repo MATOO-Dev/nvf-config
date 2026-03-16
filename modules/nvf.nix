@@ -1,25 +1,15 @@
 { inputs, ... }:
-let
-  pkgs = import inputs.nixpkgs {
-    system = "x86_64-linux";
-    hostPlatform = "x86_64-linux";
-    config = {
-
-      allowUnfree = true;
-      allowUnfreePredicate = (_: true);
-    };
-  };
-in
 {
-  systems = [
-    "x86_64-linux"
-  ];
+	systems = [
+		"x86_64-linux"
+	];
 
-  perSystem =
-    { ... }:
-    {
-      packages.default = inputs.nvf.lib.neovimConfiguration {
-        config.vim.setupOpts.view.relativeNumber = true;
-      };
-    };
+	perSystem = { ... }: {
+		packages.default = (inputs.nvf.lib.neovimConfiguration {
+			pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+			modules = [{
+				config.vim.treesitter.enable = true;
+			}];
+		}).neovim;
+	};
 }

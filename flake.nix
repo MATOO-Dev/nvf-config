@@ -16,19 +16,4 @@
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
-
-  # outputs = { nixpkgs, ... } @inputs: {
-  # 	packages.x86_64-linux.default = (
-  # 		inputs.nvf.lib.neovimConifuration {
-  # 			pkgs = nixpkgs.legacyPackages.x86_64-linux;
-  # 			modules = [
-  # 				{
-  # 					config.vim = {
-  #
-  # 					};
-  # 				}
-  # 			];
-  # 		}
-  # 	).neovim;
-  # };
 }
