@@ -1,16 +1,25 @@
+{ inputs, ... }:
+let
+  pkgs = import inputs.nixpkgs {
+    system = "x86_64-linux";
+    hostPlatform = "x86_64-linux";
+    config = {
+
+      allowUnfree = true;
+      allowUnfreePredicate = (_: true);
+    };
+  };
+in
 {
-	flake.aspects.nvf = { inputs, nixpkgs, ... }: {
-		packages.x86_64-linux.my-neovim = (
-			inputs.nvf.lib.neovimConfiguration {
-				pkgs = nixpkgs.legacyPackages.x86_64-linux;
-				modules = [
-					(
-						{ pkgs, ... }: {
-							config.vim.setupOpts.view.relativeNumber = true;
-						}
-					)
-				];
-			}
-		);
-	};
+  systems = [
+    "x86_64-linux"
+  ];
+
+  perSystem =
+    { ... }:
+    {
+      packages.default = inputs.nvf.lib.neovimConfiguration {
+        config.vim.setupOpts.view.relativeNumber = true;
+      };
+    };
 }

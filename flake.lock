@@ -1,35 +1,5 @@
 {
   "nodes": {
-    "den": {
-      "locked": {
-        "lastModified": 1773566833,
-        "narHash": "sha256-E0d359geHYNqTLNtoXC2D2nAiTukmMe3qxJT8sRCjzI=",
-        "owner": "vic",
-        "repo": "den",
-        "rev": "f2fd0622200d664797f61b500037ba8519d619bb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "vic",
-        "repo": "den",
-        "type": "github"
-      }
-    },
-    "flake-aspects": {
-      "locked": {
-        "lastModified": 1773552804,
-        "narHash": "sha256-a0kjpCZGnD5lt7yW6C3hzPhSf5KjnTyvX6XZ2NuhGs4=",
-        "owner": "vic",
-        "repo": "flake-aspects",
-        "rev": "56fa8d4d4772d58eb7f9d66c28c1cd2762b60423",
-        "type": "github"
-      },
-      "original": {
-        "owner": "vic",
-        "repo": "flake-aspects",
-        "type": "github"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -209,8 +179,6 @@
     },
     "root": {
       "inputs": {
-        "den": "den",
-        "flake-aspects": "flake-aspects",
         "flake-parts": "flake-parts",
         "import-tree": "import-tree",
         "nixpkgs": "nixpkgs",
